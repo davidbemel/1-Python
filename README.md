@@ -29,7 +29,7 @@ print('Alice' 'Bob')
 # multiline comment
 a = 1  # initialization
 ```
-### Function Coment docstring:
+## Function Coment docstring:
 ```
 def foo():
     """
@@ -107,8 +107,8 @@ while spam < 5:
     print('Hello, world.')
     spam = spam + 1
 ```
-### break Statements
-< If the execution reaches a break statement, it immediately exits the while loop’s clause:
+## Break Statements
+If the execution reaches a break statement, it immediately exits the while loop’s clause:
 ```
 while True:
     print('Please type your name.')
@@ -130,4 +130,24 @@ while True:
     if password == 'swordfish':
         break
 print('Access granted.')
+```
+# for Loops and the range() Function
+```
+print('My name is')
+for i in range(5):
+    print('Jimmy Five Times ({})'.format(str(i)))
+```
+You can even use a negative number for the step argument to make the for loop count down instead of up.
+```
+for i in range(5, -1, -1):
+print(i)
+```
+## For else statement
+This allows to specify a statement to execute in case of the full loop has been executed. Only useful when a break condition can occur in the loop:
+```
+for i in [1, 2, 3, 4, 5]:
+  if i == 3:
+    break
+ else:
+  print("only executed when no item of the list is equal to 3")
 ```
