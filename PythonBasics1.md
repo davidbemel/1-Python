@@ -21,7 +21,7 @@ String concatenation:
 ```
 print('Alice' 'Bob')
 ```
-< Note: Avoid + operator for string concatenation. Prefer string formatting.
+Note: Avoid + operator for string concatenation. Prefer string formatting.
 
 ## Comments
 ```
@@ -74,10 +74,11 @@ Operator 	Meaning
 ## Boolean evaluation
 Never use == or != operator to evaluate boolean operation. Use the is or is not operators, or use implicit boolean evaluation.
 NO (even if they are valid Python)
-< use in example: True is True // True is not False // a is not False
+use in example: True is True // True is not False // a is not False
+
+# Loops and If
 
 ## if Statements
-Examples:
 ```
 if name == 'Alice':
     print('Hi, Alice.')
@@ -91,7 +92,6 @@ else:
     print('Hello, stranger.')
 ```
 ## elif
-
 ```
 name = 'Bob'
 age = 5
@@ -131,7 +131,7 @@ while True:
         break
 print('Access granted.')
 ```
-# for Loops and the range() Function
+## for Loops and the range() Function
 ```
 print('My name is')
 for i in range(5):
