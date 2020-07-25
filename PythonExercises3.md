@@ -109,7 +109,7 @@ print(path.glob('*.py'))  # python files
 print(path.glob('*.xls))  # excel files
 ```
 ## Need to Print the object in folder glob method for review
-
+```
 from pathlib import Path
 
 path = Path()
