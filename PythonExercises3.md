@@ -1,4 +1,4 @@
-# Modules  // Sections
+# Modules  ------
 ## First form to  import
 ```
 import modules
@@ -50,7 +50,7 @@ from ecommerce import shipping
 shipping.calc_shipping()
 ```
 # Example of modules form python // search python 3 module index
-## Random module from Py
+## Use of Random module from Py
 ```
 import random
 
