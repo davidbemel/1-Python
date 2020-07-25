@@ -1,4 +1,4 @@
-# Python basics
+# Python basics WEBPAGE EXAMPLES
 ## Math Operators
 ### From Highest to Lowest precedence:
 ```
