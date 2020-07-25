@@ -1,4 +1,5 @@
-# This is a resume for Basic Python tutorial with mosh
+# Resume for Basic Python commands
+## Variables 
 ```
 a = 10
 b = 5
@@ -40,7 +41,7 @@ print(msg)
 print('vid' in msg)
 print(msg.title())
 ```
-## Operation with Maths
+## Basic maths operations
 ```
 print(10/3)
 print(10%3)
@@ -50,14 +51,14 @@ x = 10
 x += 2
 print(x)
 ```
-## Precedence operations
+## Precedence math operations
 ```
 x = 10 + 3 * 2 ** 2
 print(x)
 z = (2 + 34) * 10 - 3
 print(z)
 ```
-## Math functions
+## Math functions within Py
 ```
 import math
 z = 2.4
@@ -66,6 +67,7 @@ print(math.ceil(12.5))
 print(math.floor(420.5))
 print(math.tan(1))
 ```
+# Boolean statments and Bucles
 ## IF
 ```
 is_hot = False
@@ -88,7 +90,7 @@ while i <= 5:
     i = i + 1
 print("Done")
 ```
-## Program game to check answers
+### Example of Program game to check answers
 ```
 secret_number = 9
 guess_count = 0
@@ -122,7 +124,7 @@ for item in range(3,10,2):
 print('I am {} years old.'.format(str(28)))
 print(int(6.7) + 1)
 ```
-## For item sum prices
+## For item 
 ```
 prices = [10, 20, 30]
 total = 0
@@ -130,13 +132,13 @@ for price in prices:
     total += price
 print(f"Total: {total}")
 ```
-## Example coordinates for nested loops
+### Example coordinates for nested loops
 ```
 for x in range(4):
     for y in range(3):
         print(f"({x},{y})")
 ```
-## Example for iterate
+### Example for iterate
 ```
 numbers = [5,2,5,2,2]
 for x_count in numbers:
@@ -145,7 +147,7 @@ for x_count in numbers:
         output += "d"
     print(output)
 ```
-## Example of nested names
+### Example of nested names
 ```
 names = ['Hernan','pedro','Rosa']
 print (names[2])
@@ -154,7 +156,7 @@ print (names[:])
 print (names[0:2])
 names[0] = 'jon'
 ```
-## Find the largest number of a list
+### Example Find the largest number of a list
 ```
 numbers = [3,6,2,8,4,10]
 max = numbers[0]
@@ -163,7 +165,8 @@ for number in numbers:
         max = number
 print(max)
 ```
-## Rectangular numbers in MATRIX
+# Objects: List, Matrix and Tuple
+## Rectangular numbers
 ```
 matrix = [
     [1,2,3],
@@ -225,7 +228,7 @@ numbers.sort()
 numbers.reverse()
 print(numbers)
 ```
-## Fixed items Alias "Tuple", inmutable items
+# Fixed items Alias "Tuple", inmutable items
 ```
 numbers = (1,2,3) # you can not append or index insert // only count and index
 print(numbers[0])
@@ -237,7 +240,7 @@ print(x,y,z)
 xa, ya, za = coordinates # diferent method to get values of a tuple
 print( xa, ya, za )
 ```
-## Dictionaries use as key.value pairs
+## Dictionaries ---- Use as key.value pairs
 ```
 customer = {
     "name":"David Bernal",
@@ -251,7 +254,7 @@ print(customer) # .get does not change the original data
 customer["birthdate"] ="October 4 1984"
 print(customer)
 ```
-## Retrive information for a phone and add the name of the numbers
+### Example: Retrive information for a phone and add the name of the numbers
 ```
 phone  = input("Phone: ")
 digits_mapping = {
@@ -271,7 +274,7 @@ for ch in phone:
     output += digits_mapping.get(ch, "!")
 print(output)
 ```
-## Emoji Converter "important to evaluates words"
+### Example: Emoji Converter "important to evaluates words"
 ```
 message = input(">")
 words = message.split(' ') #uses the space to separate the string
