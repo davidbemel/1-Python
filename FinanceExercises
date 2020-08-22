@@ -1,0 +1,26 @@
+
+# Interest
+'''
+Vi = int(input("Valor inicial = "))
+n = int(input("num de periodos = "))
+i = 0.05  # cambia el interes
+Vf = Vi * (1 + i * n)
+print(Vf)
+'''
+# Value for 2 points for investments
+
+Vi = float(input("Valor a invertir = "))
+Vf = float(input("Valor esperado = "))
+ia = 0.08
+ib = 0.105
+
+Vf = (Via * ia) + ((Vi-Via) * ib)
+
+#Vf = (Via * ia) + (Vi * ib) - (Via * ib)
+#Vf = (Via * (ia -ib) + (Vi *ib)
+# Vf - (Vi * ib) = Via (ia -ib)
+
+# Via = ((Vf - (Vi * ib)) / (ia - ib)
+Via = (Vf - (Vi * ib))
+Via = Via / (ia - ib)
+print(Via)
