@@ -18,3 +18,8 @@ dict.has_key(key) 	# Devuelve true si existe la clave. Sino devuelve false
 dict.items() 	# devuelve un lista de tuplas formadas por los pares clave:valor
 dict.update(dict2) 	# Añade los elementos de un diccionario a otro
 ```
+
+Manejo de dicionarios
+
+```
+
