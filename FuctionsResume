@@ -1,0 +1,525 @@
+Listas y tuplas
+abril 9, 2014 by Recursos Python 11 comentarios
+
+
+Este artículo pretende una doble funcionalidad: introducir a aquellos nuevos en la programación o que estén migrando desde algún otro lenguaje al uso de Listas y Tuplas, como también a aquellos que lleven un tiempo con Python y quieran ampliar el tema y mejorar el código.
+
+Para empezar, podría decirse que las Listas y Tuplas son lo que en otros lenguajes se llama vectores o arrays. Sin embargo, presentan varias diferencias.
+Aplicación básica
+La diferencia
+
+Una lista no es lo mismo que una tupla. Ambas son un conjunto ordenado de valores, en donde este último puede ser cualquier objeto: un número, una cadena, una función, una clase, una instancia, etc. La diferencia es que las listas presentan una serie de funciones adicionales que permiten un amplio manejo de los valores que contienen. Basándonos en esta definición, puede decirse que las listas son dinámicas, mientras que las tuplas son estáticas.
+Crear una lista
+
+Existen dos formas de hacerlo. La primera, es la convencional. La segunda, no recomiendo utilizarla, pero vale saber que existe.
+
+    >>> a = []      # Sí.
+    >>> b = list()  # No.
+    >>> a == b      
+    True
+
+Al utilizar los corchetes [] se crea una lista vacía, sin valores. Estos pueden especificarse durante la creación ingresándolos dentro de los corchetes y separados por comas.
+
+    a = [1, 2, 3, 4]
+
+A cada uno de los valores, generalmente, se los llama elemento. Nótese que no es necesario indicar la cantidad de elementos que tiene o tendrá el objeto. En este caso, la lista cuenta con cuatro elementos numéricos. Sin embargo, tanto listas como tuplas pueden contener elementos de distintos tipos (incluso otras listas o tuplas), por ejemplo:
+
+    b = [5, "Hola mundo!", (1, 2), True, -1.5]
+
+Crear una tupla
+
+Al igual que en las listas hay dos formas de hacerlo:
+
+    >>> a = ()
+    >>> b = tuple()
+    >>> a == b
+    True
+
+Como las tuplas son estáticas, debes especificar sus elementos durante la creación:
+
+    a = (5, "Hola mundo!", True, -1.5)
+
+Si se quiere crear una tupla con un único elemento, debe añadirse una coma (,) antes de cerrar el paréntesis:
+
+    >>> b = (5,)  # Es una tupla
+    >>> type(b)
+    <type 'tuple'>
+    >>> c = (5)   # Es un número
+    >>> type(c)
+    <type 'int'>
+
+Acceso a los elementos
+
+Puedes acceder a los distintos elementos de una lista o tupla indicando el índice (comenzando desde el 0) entre corchetes.
+
+    >>> a = ["Hola", "mundo", "!"]
+    >>> a[0]
+    'Hola'
+    >>> a[1]
+    'mundo'
+    >>> a[2]
+    '!'
+
+Si el índice está fuera del rango, obtendrás una excepción.
+
+    >>> a[3]
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    IndexError: list index out of range
+
+Ya que a contiene tres elementos: el 0, el 1, y el 2.
+Asignación de valores
+
+Una vez creada una lista, puedes añadir cuantos valores desees.
+
+    >>> a = [1, 3, 5, 7]
+    >>> a.append(9)
+    >>> a
+    [1, 3, 5, 7, 9]
+
+El método append agregará el elemento especificado al final de la lista.
+
+Además, puedes modificar elementos existentes, combinando el método de acceso con el de asignación:
+
+    >>> a[2] = -10
+    >>> a[0] = "Esto es una lista."
+    >>> a
+    ['Esto es una lista.', 3, -10, 7]
+    >>>
+
+Nótese cómo han sido modificados los valores en los lugares 2 y 0.
+
+Por último, puedes insertar un elemento en el lugar que desees, utilizando el método insert. Por ejemplo:
+
+    >>> a = [1, 3, 4, 5, 6]
+    >>> a.insert(1, 2)
+    >>> a
+    [1, 2, 3, 4, 5, 6]
+
+insert toma el lugar o índice como primer argumento, y el elemento como segundo. Otros ejemplos:
+
+    >>> b = ["Hola", "Python"]
+    >>> b.insert(1, "Recursos")
+    >>> b
+    ['Hola', 'Recursos', 'Python']
+
+    >>> c = [9, 10]
+    >>> c.insert(3, 11)
+    >>> c.insert(0, 8)
+    >>> c
+    [8, 9, 10, 11]
+
+Remover elementos
+
+El método remove de una lista eliminará el primer elemento que coincida con el valor indicado como argumento.
+
+    >>> a = ["Perro", "Gato", "Caballo"]
+    >>> a.remove("Gato")
+    >>> a
+    ['Perro', 'Caballo']
+
+Si el elemento no se encuentra en la lista, se lanzará ValueError.
+
+    >>> a.remove("Pez")
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    ValueError: list.remove(x): x not in list
+
+Para eliminar el elemento en una posición determinada, se utiliza la palabra reservada del seguido de lista[posicion].
+
+    >>> a = ["Manzana", "Pera", "Banana", "Naranja"]
+    >>> del a[1]
+    >>> a
+    ['Manzana', 'Banana', 'Naranja']
+    >>> del a[2]
+    >>> a
+    ['Manzana', 'Banana']
+
+Y para eliminar todos los elementos:
+
+    >>> del a[:]
+    >>> a
+    []
+
+Más adelante veremos el uso del carácter : y comprenderás el porqué de este método. No debe confundirse con del a, que borrará la referencia a la lista.
+Cantidad de elementos
+
+La función len permite determinar la cantidad de elementos que contiene una lista o tupla.
+
+    >>> a = ("Perro", "Gato", "Caballo")
+    >>> len(a)
+    3
+
+En este caso, la tupla contiene 3 elementos, es decir, que el último se encontrará en len(a) - 1 (debido a que la cuenta comienza desde el 0).
+
+    >>> a[len(a) - 1]
+    'Caballo'
+
+Conversiones
+
+Puedes convertir listas a tuplas y viceversa. Ejemplo:
+
+    >>> a = [1, 2, 3]
+    >>> a = tuple(a)
+    >>> a
+    (1, 2, 3)
+    >>> a = list(a)
+    >>> a
+    [1, 2, 3]
+
+Slicing
+
+La traducción más adecuada en Español de slice como un sustantivo sería «un pedazo», «una porción», de una lista o tupla. Como un verbo, indicaría «cortar» o «recortar». Sin embargo, decidí mantener el término original ya que es así como se presenta en la mayoría de la documentación. Sin más, veamos un ejemplo:
+
+    >>> a = ["C", "C++", "Python", "Perl", "PHP", "Pascal"]
+    >>> a[2:5]
+    ['Python', 'Perl', 'PHP']
+
+Como se observa, una lista o tupla puede tomar un índice de comienzo y otro de finalización para recortar una lista. En este caso, a[2:5] indica tomar los valores en los índices 2, 3, 4 (nótese que no se incluye el 5). La sintaxis es objeto[comienzo:fin]. Si el comienzo no es especificado, por defecto es 0. Si el fin no es especificado, por defecto es la cantidad de elementos que contenga el objeto o len(objeto).
+
+    >>> a[:4]
+    ['C', 'C++', 'Python', 'Perl']
+    >>> a[4:]
+    ['PHP', 'Pascal']
+    >>> a[:]
+    ['C', 'C++', 'Python', 'Perl', 'PHP', 'Pascal']
+    >>> a[0:len(a)]
+    ['C', 'C++', 'Python', 'Perl', 'PHP', 'Pascal']
+
+Además, pueden utilizarse índices negativos para comenzar a contar desde el final. Por ejemplo, para obtener el último elemento de la lista:
+
+    >>> a[-1:]
+    ['Pascal']
+
+Es equivalente a:
+
+    >>> a[len(a) - 1:]
+    ['Pascal']
+
+Y para obtener todos los elementos a excepción del último:
+
+    >>> a[:-1]
+    ['C', 'C++', 'Python', 'Perl', 'PHP']
+
+O quitando los últimos tres:
+
+    >>> a[:-3]
+    ['C', 'C++', 'Python']
+
+Un último número puede añadirse al aplicarse el slicing, aquel que indica cada cuántos elementos se toma un valor. Por ejemplo:
+
+    >>> a = range(20)
+    >>> a
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    >>> a[5:15:2]
+    [5, 7, 9, 11, 13]
+
+En este caso, en una lista de 20 elementos (del 0 al 19), se toman del 5 al 14 (ya que el último número es excluyente) pero en lugar de retornarlos todos, se retornan cada dos. Otros ejemplos:
+
+    >>> a[::5]
+    [0, 5, 10, 15]
+    >>> a[5::3]
+    [5, 8, 11, 14, 17]
+    >>> a[::]
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    >>> a[::1]
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    >>> a[5:16:1]
+    [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+Como habrás notado, el último valor es 1 por defecto y se dice que indica los pasos, escalones, la medida.
+
+Por último, también puede utilizarse el slicing para modificar valores en conjunto. Ejemplo:
+
+    >>> a = ["C", "C++", "Python", "Perl", "PHP"]
+    >>> a[1:4] = "C++ 11", "Python 2.7", "Perl 5"
+    >>> a
+    ['C', 'C++ 11', 'Python 2.7', 'Perl 5', 'PHP']
+
+En este caso las tuplas no son aplicables, ya que no permiten la asignación de nuevos valores.
+Buscar elementos
+
+La forma más clara de determinar si un valor se encuentra dentro de una lista o tupla es utilizando la palabra reservada in.
+
+    >>> a = (1, 2, 3, 4)
+    >>> 3 in a
+    True
+    >>> 5 in a
+    False
+    >>> "CPython" in ["PyPy", "Stackless", "IronPython"]
+    False
+
+Además puede utilizarse en conjunto con la palabra not para lograr la expresión «valor no en lista/tupla».
+
+    >>> 0.5 not in (1, 2, 3, 4)
+    True
+    >>> 7 not in (5, 6, 7, 8)
+    False
+
+Iteración
+
+Existen varios métodos para iterar o recorrer los elementos de una tupla o lista. En otros lenguajes, generalmente se crea una variable numérica que almacena el valor del índice actual. Por ejemplo, en C:
+
+    int i;
+    int a[5] = {1, 2, 3, 4, 5};
+    for (i = 0; i < 5; i++)
+        printf("%d\n", a[i]);
+
+Esto se traduce al lenguaje Python como lo siguiente:
+
+    a = (1, 2, 3, 4, 5)
+    for i in range(len(a)):
+        print(a[i])
+
+Y produce la siguiente salida:
+
+1
+2
+3
+4
+5
+
+Sin embargo, existe un método más agradable y limpio, en el que el lenguaje asigna el valor correspondiente a un objeto durante la iteración.
+
+    for num in a:
+        print(num)
+
+La parte del código indentando (aquella que comienza con 4 espacios) se ejecutará len(a) veces, es decir, 5 veces. En la primera, a contendrá el valor 1; en la segunda, 2; en la tercera, 3; y así sucesivamente. Veamos otro ejemplo:
+
+    a = ("Hola", "Recursos", "Python", 2014, True)
+    for item in a:
+        print(item)
+
+Imprime:
+
+Hola
+Recursos
+Python
+2014
+True
+
+En algunas ocasiones puede ser necesario mantener el índice de cada uno de los elementos. Para esto puede ayudarnos la función enumerate. Para entender cómo funciona, veamos el siguiente ejemplo.
+
+    >>> list(enumerate(a))
+    [(0, 'Hola'), (1, 'Recursos'), (2, 'Python'), (3, 2014), (4, True)]
+
+Crea un objeto enumerate, que convertido a una lista se trata de un conjunto de tuplas que contiene (índice, valor) por cada elemento. Además, puede indicarse el número desde donde comenzará a contarse (0 por defecto).
+
+    >>> list(enumerate(a, 1))
+    [(1, 'Hola'), (2, 'Recursos'), (3, 'Python'), (4, 2014), (5, True)]
+
+Al momento de aplicarlo en un bucle, no es necesario convertirlo a una lista.
+
+    >>> for indice, item in enumerate(a, 1):
+    ...     print "Elemento %d: %s." % (indice, str(item))
+    ...
+    Elemento 1: Hola.
+    Elemento 2: Recursos.
+    Elemento 3: Python.
+    Elemento 4: 2014.
+    Elemento 5: True.
+
+Esta porción de código equivale a la siguiente en otros lenguajes:
+
+    for i in range(len(a)):
+        print "Elemento %d: %s." % (i + 1, str(a[i]))
+
+O bien:
+
+    for i in range(len(a)):
+        indice = i
+        item = a[indice]
+        print "Elemento %d: %s." % (indice + 1, str(item))
+
+Se puede observar que el método utilizando enumerate() es más claro y limpio.
+Desempaquetamiento o unpacking
+
+Hace referencia al método de asignar valores de una lista a un connjunto de objetos.
+
+obj1, obj2, obj3 = lista
+
+Esta expresión es equivalente a:
+
+    obj1 = lista[0]
+    obj2 = lista[1]
+    obj3 = lista[3]
+
+Siempre que lista contenga tres elementos. Si tiene más o menos, será lanzada una excepción (ValueError). Algunos ejemplos:
+
+    >>> datos = ("Jorge", "Gonzalez", 30)
+    >>> nombre, apellido, edad = datos
+    >>> nombre
+    'Jorge'
+    >>> apellido
+    'Gonzalez'
+    >>> edad
+    30
+    >>> implementaciones = ("CPython", "PyPy", "Stackless", "IronPython")
+    >>> primera, segunda = implementaciones
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    ValueError: too many values to unpack
+    >>> primera, segunda = implementaciones[:2]
+    >>> primera
+    'CPython'
+    >>> segunda
+    'PyPy'
+    >>> anteultima, ultima = implementaciones[-2:]
+    >>> anteultima
+    'Stackless'
+    >>> ultima
+    'IronPython'
+
+Más de las listas
+
+A continuación una explicación directamente puesta en práctica, debido a que los métodos tienen nombres bien descriptivos.
+
+    # Agregar los elementos al final de la lista.
+    >>> a = [1, 2, 3, 4]
+    >>> a.extend([5, 6, 7, 8, 9])
+    >>> a
+    [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    # Remover un ítem indicando su posición y obtener el valor eliminado.
+    >>> a = ["CPython", "PyPy", "Stackless"]
+    >>> eliminado = a.pop(1)
+    >>> eliminado
+    'PyPy'
+    >>> a
+    ['CPython', 'Stackless']
+
+    # Obtener la posición de un elemento indicando su valor.
+    >>> a = ["CPython", "PyPy", "Stackless", "PyPy"]
+    >>> a.index("Stackless")
+    2
+    >>> a.index("CPython")
+    0
+    >>> a.index("PyPy")  # Retorna la posición del primer elemento encontrado.
+    1
+    >>> a.index("IronPython")  # De no ser encontrado, lanza una excepción.
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    ValueError: 'IronPython' is not in list
+
+    # Determinar cuántas veces aparece un ítem en la lista.
+    >>> a = ["Perro", "Gato", "Perro", "Caballo", "Perro", "Gato"]
+    >>> a.count("Perro")
+    3
+    >>> a.count("Caballo")
+    1
+    >>> a.count("Gato")
+    2
+
+    # Ordernar los elementos de menor a mayor.
+    >>> a = [4, 7, 5, 6, 2, 1, 3]
+    >>> a.sort()
+    >>> a
+    [1, 2, 3, 4, 5, 6, 7]
+
+    # En las cadenas, su valor numérico será determinado
+    # por el código del primer caracter.
+    >>> a = ["Hola", "Recursos", "Python"]
+    >>> a.sort()
+    >>> a
+    ['Hola', 'Python', 'Recursos']
+    >>>
+    >>> ord("H")
+    72
+    >>> ord("P")
+    80
+    >>> ord("R")
+    82
+
+    # Invertir el orden de todos los elementos.
+    >>> a = [1, 2, 3, 4, 5]
+    >>> a.reverse()
+    >>> a
+    [5, 4, 3, 2, 1]
+
+    # Puede ser utilizado junto a sort() para ordenar de mayor a menor.
+    >>> a = [4, 7, 5, 6, 2, 1, 3]
+    >>> a.sort()
+    >>> a.reverse()
+    >>> a
+    [7, 6, 5, 4, 3, 2, 1]
+
+zip
+
+Un simple ejemplo para explicar la función zip:
+
+    >>> a = ("URL", "Titulo", "Tema")
+    >>> b = ("recursospython.com", "Recursos Python", "Lenguaje de programacion Python")
+    >>> c = zip(a, b)
+    >>> for nombre, valor in c:
+    ...     print("%s: %s" % (nombre, valor))
+    ...
+    URL: recursospython.com
+    Titulo: Recursos Python
+    Tema: Lenguaje de programacion Python
+
+Crea una lista de las tuplas que han sido pasadas como argumentos, facilitando así una iteración clara y sencilla. Otro ejemplo:
+
+    >>> nombres = "Jorge", "Ricardo", "Carlos"
+    >>> apellidos = "Gonzalez", "Medina", "Pedro"
+    >>> edades = 30, 25, 41
+    >>>
+    >>> for nombre, apellido, edad in zip(nombres, apellidos, edades):
+    ...     print("%s %s: %d." % (nombre, apellido, edad))
+    ...
+    Jorge Gonzalez: 30.
+    Ricardo Medina: 25.
+    Carlos Pedro: 41.
+
+sets
+
+Un set es un conjunto de elementos únicos y no ordenados. Es decir, un set no puede tener dos o más valores iguales. Tampoco puede accederse a los elementos a través de un índice, tal como es las listas o tuplas, ya que se trata de una colección desordenada de valores.
+
+Se crea a partir de un iterable (como una lista o tupla). Por ejemplo:
+
+    >>> a = (1, 2, 3, 4)
+    >>> b = set(a)
+    >>> b
+    set([1, 2, 3, 4])
+
+Si el objeto iterable tiene valores repetidos, serán eliminados.
+
+    >>> a = (1, 1, 2, 3, 4, 3, 5, 6, 7, 7, 6)
+    >>> b = set(a)
+    >>> b
+    set([1, 2, 3, 4, 5, 6, 7])
+
+Teniendo en cuenta esto, un interesante método para eliminar los valores repetidos de una lista o tupla es:
+
+    list(set(lista))
+
+En caso de ser una tupla:
+
+    tuple(set(tupla))
+
+Ejemplos:
+
+    >>> a = (1, 1, 2, 2, 3, 3)
+    >>> tuple(set(a))
+    (1, 2, 3)
+    >>> b = ["CPython", "IronPython", "Stackless", "Stackless", "CPython"]
+    >>> list(set(b))
+    ['IronPython', 'Stackless', 'CPython']
+
+Otros métodos de los sets:
+
+    >>> a = (1, 2, 3, 4, 5)
+    >>> b = set(a)
+    >>> b
+    set([1, 2, 3, 4, 5])
+    >>> b.add(6)  # Añadir elemento
+    >>> b
+    set([1, 2, 3, 4, 5, 6])
+    >>> b.remove(2)  # Eliminar elemento
+    >>> b
+    set([1, 3, 4, 5, 6])
+    >>> 4 in b  # Determinar si existe un elemento
+    True
+    >>> 2 in b
+    False
+    >>> 0 not in b
+    True
